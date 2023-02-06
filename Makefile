@@ -6,7 +6,7 @@
 #    By: druina <druina@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 10:45:54 by druina            #+#    #+#              #
-#    Updated: 2023/02/06 11:02:08 by druina           ###   ########.fr        #
+#    Updated: 2023/02/06 15:07:59 by druina           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ all: $(NAME)
 $(NAME): $(MANPATH)
 	@cd libft && make
 	@cd libft && mv libft.a ..
-	@cc $(FLAGS) -o $(NAME) $(MANPATH) libft.a -I $(HEADER)
+	@cc $(FLAGS) -o $(NAME) $(MANPATH) libft.a -I $(HEADER) -g
 
 clean:
 	@cd libft && make clean

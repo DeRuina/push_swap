@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 11:16:04 by druina            #+#    #+#             */
-/*   Updated: 2023/01/25 11:36:59 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/06 13:36:34 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static int	ft_iswhitespace(char c)
 
 int	ft_atoi(const char *str)
 {
-	unsigned long	nb;
-	int				sign;
-	int				i;
+	unsigned long long	nb;
+	int					sign;
+	int					i;
 
 	nb = 0;
 	sign = 1;
@@ -42,10 +42,6 @@ int	ft_atoi(const char *str)
 	{
 		nb = nb * 10 + (str[i] - '0');
 		i++;
-		if (nb > 9223372036854775807 && sign == -1)
-			return (0);
-		else if (nb > 9223372036854775807 && sign == 1)
-			return (-1);
 	}
 	return (sign * nb);
 }
