@@ -6,68 +6,66 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:01:58 by druina            #+#    #+#             */
-/*   Updated: 2023/02/06 15:31:02 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/07 13:58:15 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_2d(char **str)
-{
-	char	**temp;
-
-	temp = str;
-	while (*str)
-	{
-		free(*str);
-		str++;
-	}
-	free(temp);
-}
-
-int check_error(char **temp)
+int	check_error(void)
 {
 	ft_printf("Error\n");
-	free_2d(temp);
 	return (-1);
 }
 
-int check_duplicate(char **temp, char *check, int count)
+int	check_duplicate(char **temp, char *argv, int count)
 {
-	char **duplicate;
+	int	i;
 
-	duplicate = temp;
-	while (*duplicate)
+	i = 0;
+	while (temp[i] != '\0')
 	{
-
-		if (ft_atoi(*duplicate) == ft_atoi(check))
-			return(-1);
-		duplicate++;
+		if (i != count)
+			if (ft_atoi(temp[i]) == ft_atoi(argv))
+				return (-1);
+		i++;
 	}
-	return(0);
-	}
+	return (0);
+}
 
-int check_arguments(char *argv)
+int	check_argument_content(char *argv)
 {
-	char **check;
-	char **temp;
-	int count;
+	char	*temp;
 
-	check = ft_split(argv, ' ');
-	temp = check;
+	temp = argv;
+	while (*temp)
+	{
+		if (*temp != '-' && *temp != '+' && (*temp > '9' || *temp < '0'))
+			return (-1);
+		temp++;
+	}
+	return (0);
+}
+
+int	check_arguments(char **argv)
+{
+	char	**temp;
+	int		count;
+
+	argv++;
+	temp = argv;
 	count = 0;
-	while (*check)
+	while (*argv)
 	{
-		if (**check != '-' && **check != '+' && **check > '9' && **check < '0')
-			return (check_error(temp));
-		if (ft_atoi(*check) < -2147483648 || ft_atoi(*check) > 2147483647)
-			return (check_error(temp));
-		if (check_duplicate(temp, *check, count) == -1)
-			return (check_error(temp));
+		if (check_argument_content(*argv) == -1)
+			return (check_error());
+		if (ft_atoi(*argv) < -2147483648 || ft_atoi(*argv) > 2147483647)
+			return (check_error());
+		if (check_duplicate(temp, *argv, count) == -1)
+			return (check_error());
 		count++;
-		check++;
+		argv++;
 	}
-	free_2d(temp);
 	return (0);
 }
 
@@ -76,13 +74,12 @@ int	main(int argc, char **argv)
 {
 	if (argc >= 2)
 	{
-		check_arguments(argv[1]);
-
+		check_arguments(argv);
 	}
 	else if (argc == 1)
 		exit(EXIT_FAILURE);
 	else
 		exit(ft_printf("Error\n"));
 
-	exit (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
