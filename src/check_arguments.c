@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:59:41 by druina            #+#    #+#             */
-/*   Updated: 2023/02/08 10:06:22 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/08 11:10:21 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,26 +50,24 @@ int	check_argument_content(char *argv)
 int	check_arguments_as_one_string(char *argv)
 {
 	char	**one_string;
-	// char	**temp;
+	char	**temp;
 	int		count;
 
 	count = 0;
 	one_string = ft_split(argv, ' ');
-	// temp = one_string;
-	free_2d(one_string);
-	// while (*one_string)
-	// {
-	// 	if (check_argument_content(*one_string) == -1)
-	// 		return (check_error());
-	// 	if (ft_atoi(*one_string) < -2147483648
-	// 		|| ft_atoi(*one_string) > 2147483647)
-	// 		return (check_error());
-	// 	if (check_duplicate(temp, *one_string, count) == -1)
-	// 		return (check_error());
-	// 	count++;
-	// 	one_string++;
-	// }
-	// free_2d(temp);
+	temp = one_string;
+	while (*one_string)
+	{
+		if (check_argument_content(*one_string) == -1)
+			return (free_2d(temp));
+		if (ft_atoi(*one_string) < -2147483648 || ft_atoi(*one_string) > 2147483647)
+			return (free_2d(temp));
+		if (check_duplicate(temp, *one_string, count) == -1)
+			return (free_2d(temp));
+		count++;
+		one_string++;
+	}
+	free_2d(temp);
 	return (0);
 }
 
