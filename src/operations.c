@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 14:59:48 by druina            #+#    #+#             */
-/*   Updated: 2023/02/08 13:42:19 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/08 13:53:06 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,39 +45,28 @@ stack	*push(stack *top, char *data)
 	return (top);
 }
 
-stack	*one_argument_into_stack_a(char *argv)
-{
-	stack *top;
-	char **arg_list;
-	char **temp;
-
-	top = NULL;
-	arg_list = ft_split(argv, ' ');
-	temp = arg_list;
-	while (*arg_list)
-	{
-		top = push(top, *arg_list);
-		arg_list++;
-	}
-	free_2d(temp);
-	return(top);
-}
-
 stack	*insert_argv_to_stack_a(char **argv, int argc)
 {
 	stack	*top;
+	char	**one_arg;
+	char	**temp;
 
+	temp = NULL;
 	top = NULL;
+	one_arg = NULL;
 	argv++;
 	if (argc == 2)
-		top = one_argument_into_stack_a(*argv);
-	else
 	{
-		while (*argv)
-		{
-			top = push(top, *argv);
-			argv++;
-		}
+		one_arg = ft_split(*argv, ' ');
+		temp = one_arg;
+		argv = one_arg;
 	}
+	while (*argv)
+	{
+		top = push(top, *argv);
+		argv++;
+	}
+	if (temp)
+		free_2d(temp);
 	return (top);
 }
