@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:58:25 by druina            #+#    #+#             */
-/*   Updated: 2023/02/08 13:54:09 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/09 10:02:56 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int					check_error(void);
 stack				*push(stack *top, char *data);
 stack				*insert_argv_to_stack_a(char **argv, int argc);
 void				free_list(stack *top);
-
+stack				*sort_the_stack(stack *a, stack *b);
+stack				*get_end_node(stack *a);
+void				swap(stack **a_or_b, char *rule);
 
 #endif

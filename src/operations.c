@@ -6,67 +6,59 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 14:59:48 by druina            #+#    #+#             */
-/*   Updated: 2023/02/08 13:53:06 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/09 10:04:29 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_list(stack *top)
+// stack	*swap_both(stack *a, stack *b)
+// {
+
+// }
+
+void	swap(stack **a_or_b, char *rule)
 {
 	stack	*temp;
 
-	temp = top;
-	while (temp->next != NULL)
-	{
-		temp = temp->next;
-		free(top);
-		top = temp;
-	}
+	if ((*a_or_b)->next == NULL || !(*a_or_b))
+		return ;
+	temp = (*a_or_b)->next;
+	(*a_or_b)->next = (*a_or_b)->next->next;
+	temp->next = (*a_or_b);
+	(*a_or_b) = temp;
+	if (rule)
+		ft_printf("%s\n", rule);
 }
 
-stack	*push(stack *top, char *data)
+stack	*get_end_node(stack *a)
 {
-	stack	*new_node;
-	stack	*temp;
+	stack	*end;
 
-	new_node = (stack *)malloc(sizeof(stack));
-	new_node->data = ft_atoi(data);
-	new_node->next = NULL;
-	if (!top)
-		top = new_node;
-	else
-	{
-		temp = top;
-		while (temp->next != NULL)
-			temp = temp->next;
-		temp->next = new_node;
-	}
-	return (top);
+	while (a->next != NULL)
+		a = a->next;
+	end = a;
+	return (end);
 }
 
-stack	*insert_argv_to_stack_a(char **argv, int argc)
+stack	*sort_the_stack(stack *a, stack *b)
 {
 	stack	*top;
-	char	**one_arg;
-	char	**temp;
+	stack	*end;
+	stack	*temp;
 
-	temp = NULL;
-	top = NULL;
-	one_arg = NULL;
-	argv++;
-	if (argc == 2)
+	b = NULL;
+	top = a;
+	temp = a;
+	end = get_end_node(a);
+	ft_printf("last node in the list is: %p %d\n", end, end->data);
+	swap(&temp, "sa");
+	ft_printf(" top a is: %d\n", temp->data);
+	while (temp->next != NULL)
 	{
-		one_arg = ft_split(*argv, ' ');
-		temp = one_arg;
-		argv = one_arg;
+		ft_printf("a data is: %d\n", temp->data);
+		temp = temp->next;
 	}
-	while (*argv)
-	{
-		top = push(top, *argv);
-		argv++;
-	}
-	if (temp)
-		free_2d(temp);
+	ft_printf("a data is: %d\n", temp->data);
 	return (top);
 }
