@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:01:58 by druina            #+#    #+#             */
-/*   Updated: 2023/02/09 08:46:59 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/09 10:26:36 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,7 @@ int	main(int argc, char **argv)
 			exit(EXIT_FAILURE);
 		a = insert_argv_to_stack_a(argv, argc);
 		temp = a;
-		ft_printf(" top a is: %d\n", temp->data);
-		while(temp->next != NULL)
-		{
-			ft_printf("a data is: %d\n", temp->data);
-			temp = temp->next;
-		}
-		ft_printf("a data is: %d\n", temp->data);
+		print_debug(a,b);
 		a = sort_the_stack(a, b);
 	}
 	else

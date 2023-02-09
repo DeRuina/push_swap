@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:58:25 by druina            #+#    #+#             */
-/*   Updated: 2023/02/09 10:02:56 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/09 10:23:52 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct stack
 	struct stack	*next;
 }					stack;
 
+void				print_debug(stack *a, stack *b);
 int					check_arguments(char **argv, int argc);
 int					check_argument_content(char *argv);
 int					check_duplicate(char **temp, char *argv, int count);

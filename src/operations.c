@@ -6,22 +6,24 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 14:59:48 by druina            #+#    #+#             */
-/*   Updated: 2023/02/09 10:04:29 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/09 11:34:08 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// stack	*swap_both(stack *a, stack *b)
-// {
-
-// }
+void	swap_both(stack **a, stack **b)
+{
+	swap(a, NULL);
+	swap(b, NULL);
+	ft_printf("ss\n");
+}
 
 void	swap(stack **a_or_b, char *rule)
 {
 	stack	*temp;
 
-	if ((*a_or_b)->next == NULL || !(*a_or_b))
+	if ((*a_or_b) == NULL || (*a_or_b)->next == NULL)
 		return ;
 	temp = (*a_or_b)->next;
 	(*a_or_b)->next = (*a_or_b)->next->next;
@@ -34,10 +36,13 @@ void	swap(stack **a_or_b, char *rule)
 stack	*get_end_node(stack *a)
 {
 	stack	*end;
+	stack 	*temp;
 
+	temp = a;
 	while (a->next != NULL)
 		a = a->next;
 	end = a;
+	a = temp;
 	return (end);
 }
 
@@ -45,20 +50,13 @@ stack	*sort_the_stack(stack *a, stack *b)
 {
 	stack	*top;
 	stack	*end;
-	stack	*temp;
 
 	b = NULL;
 	top = a;
-	temp = a;
 	end = get_end_node(a);
-	ft_printf("last node in the list is: %p %d\n", end, end->data);
-	swap(&temp, "sa");
-	ft_printf(" top a is: %d\n", temp->data);
-	while (temp->next != NULL)
-	{
-		ft_printf("a data is: %d\n", temp->data);
-		temp = temp->next;
-	}
-	ft_printf("a data is: %d\n", temp->data);
+	swap(&a, "sa");
+	print_debug(a, b);
+	swap_both(&a, &b);
+	print_debug(a, b);
 	return (top);
 }

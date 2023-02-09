@@ -6,13 +6,13 @@
 #    By: druina <druina@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 10:45:54 by druina            #+#    #+#              #
-#    Updated: 2023/02/09 08:47:49 by druina           ###   ########.fr        #
+#    Updated: 2023/02/09 10:23:28 by druina           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRC = push_swap.c check_arguments.c operations.c insert_to_stack_a.c
+SRC = push_swap.c check_arguments.c operations.c insert_to_stack_a.c debug.c
 
 MANPATH = $(addprefix ./src/, $(SRC))
 
