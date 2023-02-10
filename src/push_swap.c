@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:01:58 by druina            #+#    #+#             */
-/*   Updated: 2023/02/09 10:26:36 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/10 10:37:25 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 int	main(int argc, char **argv)
 {
-	stack *a;
-	stack *b;
-	stack *temp;
+	stack	*a;
+	stack	*b;
+	stack	*temp;
+
 	a = NULL;
 	b = NULL;
 	if (argc > 1)
@@ -25,11 +26,10 @@ int	main(int argc, char **argv)
 			exit(EXIT_FAILURE);
 		a = insert_argv_to_stack_a(argv, argc);
 		temp = a;
-		print_debug(a,b);
+		print_debug(a, b);
 		a = sort_the_stack(a, b);
 	}
 	else
 		exit(EXIT_FAILURE);
-
 	exit(EXIT_SUCCESS);
 }

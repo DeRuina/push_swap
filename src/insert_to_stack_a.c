@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 08:33:04 by druina            #+#    #+#             */
-/*   Updated: 2023/02/09 08:33:42 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/10 10:33:57 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,17 @@ void	free_list(stack *top)
 		free(top);
 		top = temp;
 	}
+	free(top);
 }
 
-stack	*push(stack *top, char *data)
+stack	*insert(stack *top, char *data)
 {
 	stack	*new_node;
 	stack	*temp;
 
 	new_node = (stack *)malloc(sizeof(stack));
+	if (!new_node)
+		return(NULL);
 	new_node->data = ft_atoi(data);
 	new_node->next = NULL;
 	if (!top)
@@ -51,23 +54,23 @@ stack	*insert_argv_to_stack_a(char **argv, int argc)
 	char	**one_arg;
 	char	**temp;
 
-	temp = NULL;
+	temp = argv;
 	top = NULL;
 	one_arg = NULL;
 	argv++;
 	if (argc == 2)
 	{
 		one_arg = ft_split(*argv, ' ');
-		temp = one_arg;
 		argv = one_arg;
 	}
 	while (*argv)
 	{
-		top = push(top, *argv);
+		top = insert(top, *argv);
 		argv++;
 	}
-	if (temp)
-		free_2d(temp);
+	if (one_arg)
+		free_2d(one_arg);
+	argv = temp;
 	return (top);
 }
 

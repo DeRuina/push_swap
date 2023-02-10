@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:59:41 by druina            #+#    #+#             */
-/*   Updated: 2023/02/08 11:24:13 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/10 10:37:36 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int	check_arguments_as_one_string(char *argv)
 	{
 		if (check_argument_content(*one_string) == -1)
 			return (free_2d(temp));
-		if (ft_atoi(*one_string) < -2147483648 || ft_atoi(*one_string) > 2147483647)
+		if (ft_atoi(*one_string) < -2147483648
+			|| ft_atoi(*one_string) > 2147483647)
 			return (free_2d(temp));
 		if (check_duplicate(temp, *one_string, count) == -1)
 			return (free_2d(temp));
