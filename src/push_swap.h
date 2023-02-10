@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:58:25 by druina            #+#    #+#             */
-/*   Updated: 2023/02/10 10:53:22 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/10 15:35:56 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ stack				*get_end_node(stack *a);
 void				swap(stack **a_or_b, char *rule);
 void				swap_both(stack **a, stack **b);
 void				push(stack **push_from, stack **push_to, char *rule);
-void				rotate(stack **a_or_b, stack *end, char *rule);
-void				rotate_both(stack **a, stack **b, stack *end_a,
-						stack *end_b);
+void				rotate(stack **a_or_b, char *rule);
+void				rotate_both(stack **a, stack **b);
+void				reverse_rotate(stack **a_or_b, char *rule);
+void				reverse_rotate_both(stack **a, stack **b);
 
 #endif
