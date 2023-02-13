@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:58:25 by druina            #+#    #+#             */
-/*   Updated: 2023/02/10 15:35:56 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/13 13:58:17 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 typedef struct stack
 {
 	int				data;
+	int				position;
 	struct stack	*next;
 }					stack;
 

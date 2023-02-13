@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 08:33:04 by druina            #+#    #+#             */
-/*   Updated: 2023/02/10 10:33:57 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/13 15:19:20 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,51 @@ void	free_list(stack *top)
 	free(top);
 }
 
+void sort_position(stack **top)
+{
+	static int place = 1;
+	stack *temp;
+	stack *end;
+	stack *smallest;
+
+
+	smallest = NULL;
+	if (!(*top)->position)
+	{
+		(*top)->position = 1;
+		return;
+	}
+	end = get_end_node((*top));
+	temp = (*top);
+	while (temp->next != NULL)
+	{
+		if (temp->data > end->data)
+		{
+			if (smallest != NULL)
+			{
+				if (temp->data < smallest->data)
+					smallest = temp;
+			}
+			else
+				smallest = temp;
+		}
+		temp = temp->next;
+		if (temp->next == NULL)
+			end->position = ++place;
+	}
+	if (smallest != NULL)
+		end->position = smallest->position;
+	temp = (*top);
+	while (temp->next != NULL)
+	{
+		if (end->position <= temp->position)
+			temp->position++;
+		temp = temp->next;
+	}
+
+
+}
+
 stack	*insert(stack *top, char *data)
 {
 	stack	*new_node;
@@ -35,6 +80,7 @@ stack	*insert(stack *top, char *data)
 	if (!new_node)
 		return(NULL);
 	new_node->data = ft_atoi(data);
+	new_node->position = 0;
 	new_node->next = NULL;
 	if (!top)
 		top = new_node;
@@ -66,6 +112,7 @@ stack	*insert_argv_to_stack_a(char **argv, int argc)
 	while (*argv)
 	{
 		top = insert(top, *argv);
+		sort_position(&top);
 		argv++;
 	}
 	if (one_arg)
