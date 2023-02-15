@@ -6,68 +6,11 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:36:48 by druina            #+#    #+#             */
-/*   Updated: 2023/02/15 10:41:07 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/15 11:14:04 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	iterations_until_bottom(stack *temp)
-{
-	int	iterations;
-
-	iterations = 0;
-	while (temp->next != NULL)
-	{
-		iterations++;
-		temp = temp->next;
-	}
-	iterations++;
-	return (iterations);
-}
-
-int	iterations_until_top(stack *temp, stack *a)
-{
-	int	iterations;
-
-	iterations = 0;
-	while (a->data != temp->data)
-	{
-		iterations++;
-		a = a->next;
-	}
-	return (iterations);
-}
-
-int	find_location_in_stack(stack *a, int position)
-{
-	int		location;
-	stack	*temp;
-
-	temp = a;
-	location = 1;
-	while (temp->next != NULL)
-	{
-		if (position == temp->position)
-			return (location);
-		location++;
-		temp = temp->next;
-	}
-	return (location);
-}
-
-int	stack_size(stack *a)
-{
-	int	i;
-
-	i = 1;
-	while (a->next != NULL)
-	{
-		a = a->next;
-		i++;
-	}
-	return (i);
-}
 
 stack	*sort_the_stack(stack *a, stack *b)
 {
@@ -75,9 +18,8 @@ stack	*sort_the_stack(stack *a, stack *b)
 	stack	*temp;
 	int		i;
 	int		len;
-	int 	up;
+	int		up;
 	int		down;
-
 
 	len = stack_size(a);
 	temp = a;
@@ -95,20 +37,20 @@ stack	*sort_the_stack(stack *a, stack *b)
 			while (++i <= up)
 			{
 				rotate(&a, "ra");
-				print_debug(a, b);
+				// print_debug(a, b);
 			}
 			push(&a, &b, "pb");
-			print_debug(a, b);
+			// print_debug(a, b);
 		}
 		else
 		{
 			while (++i <= down)
 			{
 				reverse_rotate(&a, "rra");
-				print_debug(a, b);
+				// print_debug(a, b);
 			}
 			push(&a, &b, "pb");
-			print_debug(a, b);
+			// print_debug(a, b);
 		}
 		temp = a;
 		i = 0;
@@ -118,7 +60,7 @@ stack	*sort_the_stack(stack *a, stack *b)
 	while (len-- != 0)
 	{
 		push(&b, &a, "pa");
-		print_debug(a, b);
+		// print_debug(a, b);
 	}
 	return (a);
 }

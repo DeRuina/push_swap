@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:01:58 by druina            #+#    #+#             */
-/*   Updated: 2023/02/15 09:29:15 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/15 10:48:45 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	main(int argc, char **argv)
 			exit(EXIT_FAILURE);
 		a = insert_argv_to_stack_a(argv, argc);
 		temp = a;
-		print_debug(a, b);
+		// print_debug(a, b);
 		a = sort_the_stack(a, b);
-		print_debug(a, b);
+		// print_debug(a, b);
 	}
 	else
 		exit(EXIT_FAILURE);

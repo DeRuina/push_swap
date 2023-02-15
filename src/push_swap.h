@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:58:25 by druina            #+#    #+#             */
-/*   Updated: 2023/02/15 08:32:24 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/15 11:12:46 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,9 @@ void				rotate_both(stack **a, stack **b);
 void				reverse_rotate(stack **a_or_b, char *rule);
 void				reverse_rotate_both(stack **a, stack **b);
 void				sort_position(stack **top);
+int					stack_size(stack *a);
+int					find_location_in_stack(stack *a, int position);
+int					iterations_until_top(stack *temp, stack *a);
+int					iterations_until_bottom(stack *temp);
 
 #endif
