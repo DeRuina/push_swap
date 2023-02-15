@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 08:33:04 by druina            #+#    #+#             */
-/*   Updated: 2023/02/13 15:19:20 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/15 08:29:01 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void sort_position(stack **top)
 	stack *temp;
 	stack *end;
 	stack *smallest;
-
 
 	smallest = NULL;
 	if (!(*top)->position)

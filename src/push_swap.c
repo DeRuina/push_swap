@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:01:58 by druina            #+#    #+#             */
-/*   Updated: 2023/02/10 10:37:25 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/15 09:29:15 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 		temp = a;
 		print_debug(a, b);
 		a = sort_the_stack(a, b);
+		print_debug(a, b);
 	}
 	else
 		exit(EXIT_FAILURE);
