@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:36:48 by druina            #+#    #+#             */
-/*   Updated: 2023/02/15 10:14:02 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/15 10:41:07 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ int	iterations_until_top(stack *temp, stack *a)
 		iterations++;
 		a = a->next;
 	}
-	if (iterations != 0)
-		iterations++;
 	return (iterations);
 }
 
@@ -77,8 +75,9 @@ stack	*sort_the_stack(stack *a, stack *b)
 	stack	*temp;
 	int		i;
 	int		len;
-	int		up;
+	int 	up;
 	int		down;
+
 
 	len = stack_size(a);
 	temp = a;
@@ -94,14 +93,22 @@ stack	*sort_the_stack(stack *a, stack *b)
 		if (up <= down)
 		{
 			while (++i <= up)
+			{
 				rotate(&a, "ra");
+				print_debug(a, b);
+			}
 			push(&a, &b, "pb");
+			print_debug(a, b);
 		}
 		else
 		{
 			while (++i <= down)
+			{
 				reverse_rotate(&a, "rra");
+				print_debug(a, b);
+			}
 			push(&a, &b, "pb");
+			print_debug(a, b);
 		}
 		temp = a;
 		i = 0;
@@ -109,6 +116,9 @@ stack	*sort_the_stack(stack *a, stack *b)
 	}
 	len = stack_size(b);
 	while (len-- != 0)
+	{
 		push(&b, &a, "pa");
+		print_debug(a, b);
+	}
 	return (a);
 }
