@@ -6,11 +6,42 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:36:48 by druina            #+#    #+#             */
-/*   Updated: 2023/02/15 11:14:04 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/15 16:58:35 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void sort_5(stack **a)
+{
+	if ()
+}
+
+void sort_3(stack **a)
+{
+	if ((*a)->data > (*a)->next->data)
+	{
+		if (((*a)->data > (*a)->next->next->data) && ((*a)->next->data < (*a)->next->next->data))
+			rotate(a, "ra");
+		else if (((*a)->data > (*a)->next->next->data) && ((*a)->next->data > (*a)->next->next->data))
+		{
+			swap(a, "sa");
+			reverse_rotate(a, "rra");
+		}
+		else
+			swap(a, "sa");
+	}
+	else
+	{
+		if ((*a)->data > (*a)->next->next->data)
+			reverse_rotate(a, "rra");
+		else
+		{
+			reverse_rotate(a, "rra");
+			swap(a, "sa");
+		}
+	}
+}
 
 stack	*sort_the_stack(stack *a, stack *b)
 {
@@ -25,6 +56,11 @@ stack	*sort_the_stack(stack *a, stack *b)
 	temp = a;
 	position = 1;
 	i = 0;
+	if (len == 3)
+	{
+		sort_3(&a);
+		return (a);
+	}
 	while (len-- != 0)
 	{
 		while (++i < find_location_in_stack(a, position))
