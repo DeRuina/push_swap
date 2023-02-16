@@ -6,11 +6,87 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:36:48 by druina            #+#    #+#             */
-/*   Updated: 2023/02/16 09:11:48 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/16 16:56:04 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void sort_5(stack **a, stack **b, int i, int position)
+{
+
+	stack *temp;
+	int iterations;
+	int iterations_1;
+	stack *top;
+	int iterations_2;
+	int j;
+
+	j = 2;
+	top = (*a);
+	temp = (*a);
+	while (j != 0)
+	{
+		while (++i < find_location_in_stack((*a), position))
+				temp = temp->next;
+		iterations = iterations_until_top(temp, (*a));
+		(*a) = top;
+		if	(iterations > iterations_until_bottom(temp))
+			iterations = iterations_until_bottom(temp);
+			if (j == 2)
+				iterations_2 = iterations;
+			else
+				iterations_1 = iterations;
+			j--;
+			position--;
+			i = 0;
+			temp = (*a);
+	}
+	 position += 2;
+	if (iterations_2 < iterations_1)
+	{
+		check_iterations_and_push(a, b, position);
+		check_iterations_and_push(a, b, (position - 1));
+		swap(b, "sb");
+	}
+	else
+	{
+		check_iterations_and_push(a, b, (position - 1));
+		check_iterations_and_push(a, b, position);
+	}
+	sort_3(a);
+}
+
+void check_iterations_and_push(stack **a, stack **b, int position)
+{
+	int i;
+	int up;
+	int down;
+	stack *temp;
+	stack *top;
+
+	top = (*a);
+	temp = (*a);
+	i = 0;
+	while (++i < find_location_in_stack((*a), position))
+			temp = temp->next;
+		i = 0;
+		up = iterations_until_top(temp, (*a));
+		(*a) = top;
+		down = iterations_until_bottom(temp);
+		if (up <= down)
+		{
+			while (++i <= up)
+				rotate(a, "ra");
+			push(a, b, "pb");
+		}
+		else
+		{
+			while (++i <= down)
+				reverse_rotate(a, "rra");
+			push(a, b, "pb");
+		}
+}
 
 void	sort_3(stack **a)
 {
@@ -48,8 +124,8 @@ stack	*sort_the_stack(stack *a, stack *b)
 	stack	*temp;
 	int		i;
 	int		len;
-	int		up;
-	int		down;
+	// int		up;
+	// int		down;
 
 	len = stack_size(a);
 	temp = a;
@@ -57,28 +133,34 @@ stack	*sort_the_stack(stack *a, stack *b)
 	i = 0;
 	while (len != 0)
 	{
+		if (len == 5)
+		{
+			sort_5(&a, &b, 0, (position + 1));
+			break ;
+		}
 		if (len == 3)
 		{
 			sort_3(&a);
 			break ;
 		}
-		while (++i < find_location_in_stack(a, position))
-			temp = temp->next;
-		i = 0;
-		up = iterations_until_top(temp, a);
-		down = iterations_until_bottom(temp);
-		if (up <= down)
-		{
-			while (++i <= up)
-				rotate(&a, "ra");
-			push(&a, &b, "pb");
-		}
-		else
-		{
-			while (++i <= down)
-				reverse_rotate(&a, "rra");
-			push(&a, &b, "pb");
-		}
+		check_iterations_and_push(&a, &b, position);
+		// while (++i < find_location_in_stack(a, position))
+		// 	temp = temp->next;
+		// i = 0;
+		// up = iterations_until_top(temp, a);
+		// down = iterations_until_bottom(temp);
+		// if (up <= down)
+		// {
+		// 	while (++i <= up)
+		// 		rotate(&a, "ra");
+		// 	push(&a, &b, "pb");
+		// }
+		// else
+		// {
+		// 	while (++i <= down)
+		// 		reverse_rotate(&a, "rra");
+		// 	push(&a, &b, "pb");
+		// }
 		temp = a;
 		i = 0;
 		position++;
