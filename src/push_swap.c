@@ -6,22 +6,18 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:01:58 by druina            #+#    #+#             */
-/*   Updated: 2023/02/15 16:02:39 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/16 08:44:10 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int is_stack_sorted(stack *a)
+int	is_stack_sorted(stack *a)
 {
-	int counter;
-
-	counter = 1;
 	while (a->next != NULL)
 	{
-		if (counter != a->position)
+		if (a->data > a->next->data)
 			return (1);
-		counter++;
 		a = a->next;
 	}
 	return (0);

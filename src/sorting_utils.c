@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:13:30 by druina            #+#    #+#             */
-/*   Updated: 2023/02/15 11:14:05 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/16 08:59:30 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int	stack_size(stack *a)
 	int	i;
 
 	i = 1;
+	if (!a)
+		return (0);
 	while (a->next != NULL)
 	{
 		a = a->next;

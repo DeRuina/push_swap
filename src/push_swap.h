@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:58:25 by druina            #+#    #+#             */
-/*   Updated: 2023/02/15 16:39:42 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/16 08:35:26 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ int					find_location_in_stack(stack *a, int position);
 int					iterations_until_top(stack *temp, stack *a);
 int					iterations_until_bottom(stack *temp);
 void				sort_3(stack **a);
+int					is_stack_sorted(stack *a);
 
 #endif

@@ -6,19 +6,17 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:36:48 by druina            #+#    #+#             */
-/*   Updated: 2023/02/15 16:58:35 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/16 08:37:07 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void sort_5(stack **a)
-{
-	if ()
-}
 
 void sort_3(stack **a)
 {
+	if (is_stack_sorted(*a) == 0)
+		return;
 	if ((*a)->data > (*a)->next->data)
 	{
 		if (((*a)->data > (*a)->next->next->data) && ((*a)->next->data < (*a)->next->next->data))
@@ -61,6 +59,8 @@ stack	*sort_the_stack(stack *a, stack *b)
 		sort_3(&a);
 		return (a);
 	}
+	if (len == 5)
+		len = 2;
 	while (len-- != 0)
 	{
 		while (++i < find_location_in_stack(a, position))
@@ -92,6 +92,8 @@ stack	*sort_the_stack(stack *a, stack *b)
 		i = 0;
 		position++;
 	}
+	if (stack_size(a) == 3)
+		sort_3(&a);
 	len = stack_size(b);
 	while (len-- != 0)
 	{
