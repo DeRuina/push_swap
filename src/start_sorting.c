@@ -6,22 +6,23 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:36:48 by druina            #+#    #+#             */
-/*   Updated: 2023/02/16 08:37:07 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/16 09:11:48 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-void sort_3(stack **a)
+void	sort_3(stack **a)
 {
 	if (is_stack_sorted(*a) == 0)
-		return;
+		return ;
 	if ((*a)->data > (*a)->next->data)
 	{
-		if (((*a)->data > (*a)->next->next->data) && ((*a)->next->data < (*a)->next->next->data))
+		if (((*a)->data > (*a)->next->next->data)
+			&& ((*a)->next->data < (*a)->next->next->data))
 			rotate(a, "ra");
-		else if (((*a)->data > (*a)->next->next->data) && ((*a)->next->data > (*a)->next->next->data))
+		else if (((*a)->data > (*a)->next->next->data)
+				&& ((*a)->next->data > (*a)->next->next->data))
 		{
 			swap(a, "sa");
 			reverse_rotate(a, "rra");
@@ -54,15 +55,13 @@ stack	*sort_the_stack(stack *a, stack *b)
 	temp = a;
 	position = 1;
 	i = 0;
-	if (len == 3)
+	while (len != 0)
 	{
-		sort_3(&a);
-		return (a);
-	}
-	if (len == 5)
-		len = 2;
-	while (len-- != 0)
-	{
+		if (len == 3)
+		{
+			sort_3(&a);
+			break ;
+		}
 		while (++i < find_location_in_stack(a, position))
 			temp = temp->next;
 		i = 0;
@@ -71,34 +70,22 @@ stack	*sort_the_stack(stack *a, stack *b)
 		if (up <= down)
 		{
 			while (++i <= up)
-			{
 				rotate(&a, "ra");
-				// print_debug(a, b);
-			}
 			push(&a, &b, "pb");
-			// print_debug(a, b);
 		}
 		else
 		{
 			while (++i <= down)
-			{
 				reverse_rotate(&a, "rra");
-				// print_debug(a, b);
-			}
 			push(&a, &b, "pb");
-			// print_debug(a, b);
 		}
 		temp = a;
 		i = 0;
 		position++;
+		len--;
 	}
-	if (stack_size(a) == 3)
-		sort_3(&a);
 	len = stack_size(b);
 	while (len-- != 0)
-	{
 		push(&b, &a, "pa");
-		// print_debug(a, b);
-	}
 	return (a);
 }
