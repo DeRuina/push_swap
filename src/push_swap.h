@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:58:25 by druina            #+#    #+#             */
-/*   Updated: 2023/02/16 14:38:54 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/16 17:16:09 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ int					is_stack_sorted(stack *a);
 void				check_iterations_and_push(stack **a, stack **b,
 						int position);
 void				sort_5(stack **a, stack **b, int i, int position);
+void				push_stack_b_back_to_a(stack **a, stack **b);
 
 #endif

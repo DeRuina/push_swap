@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:01:58 by druina            #+#    #+#             */
-/*   Updated: 2023/02/16 08:44:10 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/16 17:28:32 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@ int	main(int argc, char **argv)
 		if (is_stack_sorted(a) == 0)
 			exit(EXIT_SUCCESS);
 		temp = a;
-		// print_debug(a, b);
-		a = sort_the_stack(a, b);
-		// print_debug(a, b);
+		if (stack_size(a) == 2)
+			swap(&a, "sa");
+		else
+			a = sort_the_stack(a, b);
+
 	}
 	else
 		exit(EXIT_FAILURE);
