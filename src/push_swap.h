@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:58:25 by druina            #+#    #+#             */
-/*   Updated: 2023/02/16 17:16:09 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/17 09:42:28 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ void				sort_3(stack **a);
 int					is_stack_sorted(stack *a);
 void				check_iterations_and_push(stack **a, stack **b,
 						int position);
-void				sort_5(stack **a, stack **b, int i, int position);
-void				push_stack_b_back_to_a(stack **a, stack **b);
+void				sort_5(stack **a, stack **b, int reverse_flag,
+						int position);
+void				push_stack_b_back_to_a(stack **a, stack **b, int len);
+int					is_stack_reverse_sorted(stack *a);
+void				reverse_sort_3(stack **a);
 
 #endif

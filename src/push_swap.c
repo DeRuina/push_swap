@@ -6,11 +6,22 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:01:58 by druina            #+#    #+#             */
-/*   Updated: 2023/02/16 17:28:32 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/17 08:51:01 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int is_stack_reverse_sorted(stack *a)
+{
+	while (a->next != NULL)
+	{
+		if (a->data < a->next->data)
+			return (1);
+		a = a->next;
+	}
+	return (0);
+}
 
 int	is_stack_sorted(stack *a)
 {
