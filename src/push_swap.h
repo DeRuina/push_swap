@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:58:25 by druina            #+#    #+#             */
-/*   Updated: 2023/02/17 09:42:28 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/20 11:04:38 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,7 @@ void				sort_5(stack **a, stack **b, int reverse_flag,
 void				push_stack_b_back_to_a(stack **a, stack **b, int len);
 int					is_stack_reverse_sorted(stack *a);
 void				reverse_sort_3(stack **a);
+int					find_min_position(stack *a_or_b);
+void				sorting(stack **a, stack **b);
 
 #endif

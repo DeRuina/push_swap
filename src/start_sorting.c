@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:36:48 by druina            #+#    #+#             */
-/*   Updated: 2023/02/17 11:21:23 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/20 14:26:18 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ void	sort_5(stack **a, stack **b, int reverse_flag, int position)
 	stack	*top;
 	int		iterations_2;
 	int		j;
-	int 	i;
+	int		i;
 
 	i = 0;
 	j = 2;
 	top = (*a);
 	temp = (*a);
+	position = find_min_position((*a)) + 1;
 	while (j != 0)
 	{
 		while (++i < find_location_in_stack((*a), position))
@@ -43,13 +44,15 @@ void	sort_5(stack **a, stack **b, int reverse_flag, int position)
 		i = 0;
 		temp = (*a);
 	}
-	position += 2;
+	position = find_min_position((*a)) + 1;
 	if (reverse_flag == 1)
 	{
 		push_stack_b_back_to_a(a, b, 2);
 		reverse_sort_3(b);
+		push_stack_b_back_to_a(a, b, 3);
+		return ;
 	}
-	 else if (iterations_2 < iterations_1)
+	else if (iterations_2 < iterations_1)
 	{
 		check_iterations_and_push(a, b, position);
 		check_iterations_and_push(a, b, (position - 1));
@@ -61,8 +64,12 @@ void	sort_5(stack **a, stack **b, int reverse_flag, int position)
 		check_iterations_and_push(a, b, position);
 	}
 	if (reverse_flag == 0)
+	{
 		sort_3(a);
-	push_stack_b_back_to_a(a, b, stack_size(*b));
+		push_stack_b_back_to_a(a, b, 2);
+		return ;
+	}
+	push_stack_b_back_to_a(a, b, stack_size((*b)));
 }
 
 void	check_iterations_and_push(stack **a, stack **b, int position)
@@ -96,18 +103,20 @@ void	check_iterations_and_push(stack **a, stack **b, int position)
 	}
 }
 
-void reverse_sort_3(stack **a)
+void	reverse_sort_3(stack **a)
 {
 	if (is_stack_reverse_sorted((*a)) == 0)
-		return;
+		return ;
 	if ((*a)->data < (*a)->next->data)
 	{
-		if (((*a)->data < (*a)->next->next->data) && ((*a)->next->data < (*a)->next->next->data))
+		if (((*a)->data < (*a)->next->next->data)
+			&& ((*a)->next->data < (*a)->next->next->data))
 		{
 			swap(a, "sb");
 			reverse_rotate(a, "rrb");
 		}
-		else if (((*a)->data < (*a)->next->next->data) && ((*a)->next->data > (*a)->next->next->data))
+		else if (((*a)->data < (*a)->next->next->data)
+				&& ((*a)->next->data > (*a)->next->next->data))
 			rotate(a, "rb");
 		else
 			swap(a, "sb");
@@ -130,9 +139,11 @@ void	sort_3(stack **a)
 		return ;
 	if ((*a)->data > (*a)->next->data)
 	{
-		if (((*a)->data > (*a)->next->next->data) && ((*a)->next->data < (*a)->next->next->data))
+		if (((*a)->data > (*a)->next->next->data)
+			&& ((*a)->next->data < (*a)->next->next->data))
 			rotate(a, "ra");
-		else if (((*a)->data > (*a)->next->next->data) && ((*a)->next->data > (*a)->next->next->data))
+		else if (((*a)->data > (*a)->next->next->data)
+				&& ((*a)->next->data > (*a)->next->next->data))
 		{
 			swap(a, "sa");
 			reverse_rotate(a, "rra");
@@ -152,36 +163,28 @@ void	sort_3(stack **a)
 	}
 }
 
-void sort_10(stack **a, stack **b, int position)
+void	sort_10(stack **a, stack **b, int position)
 {
-	int j;
-	stack *temp;
+	stack	*temp;
 
 	temp = (*a);
-	j = 5;
-	while (j != 0)
+	while (stack_size((*a)) != 7)
 	{
-		while (temp->next != NULL)
-			{
-				if (temp->position >= 1 && temp->position <= 3)
-				{
-					temp = temp->next;
-					check_iterations_and_push(a, b, temp->position);
-				}
-				else
-					temp = temp->next;
-			}
 		if (temp->position >= 1 && temp->position <= 3)
-				check_iterations_and_push(a, b, temp->position);
-		check_iterations_and_push(a, b, 4);
-		check_iterations_and_push(a, b, 5);
-		sort_5(a, b, 0, (position + 1));
-		sort_5(a, b, 1, 0);
-		j--;
+		{
+			check_iterations_and_push(a, b, temp->position);
+			temp = (*a);
+		}
+		else
+			temp = temp->next;
 	}
+	check_iterations_and_push(a, b, 4);
+	check_iterations_and_push(a, b, 5);
+	sort_5(a, b, 0, (position + 1));
+	sort_5(a, b, 1, 0);
 }
 
-void push_stack_b_back_to_a(stack **a, stack **b, int len)
+void	push_stack_b_back_to_a(stack **a, stack **b, int len)
 {
 	while (len-- != 0)
 		push(b, a, "pa");
@@ -200,15 +203,14 @@ stack	*sort_the_stack(stack *a, stack *b)
 	i = 0;
 	while (len != 0)
 	{
-		if (len == 10)
-		{
-			sort_10(&a, &b, position);
-			return (a);
-		}
+		if (len > 10)
+			sorting(&a, &b);
 		if (len == 5)
 		{
 			sort_5(&a, &b, 0, (position + 1));
-			return (a);
+
+			len = 0;
+			continue;
 		}
 		if (len == 3)
 		{
