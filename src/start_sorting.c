@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:36:48 by druina            #+#    #+#             */
-/*   Updated: 2023/02/21 11:04:51 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/21 15:14:28 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,8 +203,11 @@ stack	*sort_the_stack(stack *a, stack *b)
 	i = 0;
 	while (len != 0)
 	{
-		// if (len > 10)
-		// 	sorting(&a, &b);
+		if (len > 5)
+		{
+			sorting(&a, &b);
+			return (a);
+		}
 		if (len == 5)
 		{
 			sort_5(&a, &b, 0, (position + 1));
