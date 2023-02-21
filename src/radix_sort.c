@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 13:25:41 by druina            #+#    #+#             */
-/*   Updated: 2023/02/21 15:34:54 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/21 15:58:06 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void sorting(stack **a, stack **b)
 	stack *temp;
 	int mask;
 
-	mask = 0b000000000000000000000000000000001;
+	mask = 1;
 	i = 0;
 	bits = 0;
 	temp = (*a);
