@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:58:25 by druina            #+#    #+#             */
-/*   Updated: 2023/02/20 11:04:38 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/22 14:39:19 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int					check_arguments_as_one_string(char *argv);
 int					check_error(void);
 stack				*insert(stack *top, char *data);
 stack				*insert_argv_to_stack_a(char **argv, int argc);
-void				free_list(stack *top);
 stack				*sort_the_stack(stack *a, stack *b);
 stack				*get_end_node(stack *a);
 void				swap(stack **a_or_b, char *rule);
@@ -49,11 +48,8 @@ void				sort_3(stack **a);
 int					is_stack_sorted(stack *a);
 void				check_iterations_and_push(stack **a, stack **b,
 						int position);
-void				sort_5(stack **a, stack **b, int reverse_flag,
-						int position);
+void				sort_5(stack **a, stack **b, int position);
 void				push_stack_b_back_to_a(stack **a, stack **b, int len);
-int					is_stack_reverse_sorted(stack *a);
-void				reverse_sort_3(stack **a);
 int					find_min_position(stack *a_or_b);
 void				sorting(stack **a, stack **b);
 

@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 11:02:57 by druina            #+#    #+#             */
-/*   Updated: 2023/02/08 11:09:57 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/22 13:37:44 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,7 +223,7 @@ size_t				ft_strlcat(char *dest, const char *src, size_t destsize);
  * @param  str: const char pointer - tring
  * @retval the string as a int, NULL if any garbage lettes beforehand
  */
-int					ft_atoi(const char *str);
+long long			ft_atoi(char *str);
 /**
  * @brief  allocate dynamic memory and fill it with 0's
  * @note uses ft_bzero

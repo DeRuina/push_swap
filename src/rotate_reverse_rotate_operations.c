@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:38:45 by druina            #+#    #+#             */
-/*   Updated: 2023/02/21 15:38:13 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/22 14:17:55 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	rotate(stack **a_or_b, char *rule)
 	stack	*end;
 
 	if ((*a_or_b)->next == NULL)
-		return;
+		return ;
 	end = get_end_node((*a_or_b));
 	temp = (*a_or_b)->next;
 	if (temp == NULL)

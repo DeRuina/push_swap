@@ -6,17 +6,17 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:13:30 by druina            #+#    #+#             */
-/*   Updated: 2023/02/20 08:55:39 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/22 14:18:04 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int find_min_position(stack *a_or_b)
+int	find_min_position(stack *a_or_b)
 {
-	int min;
-	int len;
-	stack *temp;
+	int		min;
+	int		len;
+	stack	*temp;
 
 	temp = a_or_b;
 	len = stack_size(a_or_b);

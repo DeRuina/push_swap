@@ -6,13 +6,13 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:36:48 by druina            #+#    #+#             */
-/*   Updated: 2023/02/21 15:14:28 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/22 14:17:38 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_5(stack **a, stack **b, int reverse_flag, int position)
+void	sort_5(stack **a, stack **b, int position)
 {
 	stack	*temp;
 	int		iterations;
@@ -45,14 +45,7 @@ void	sort_5(stack **a, stack **b, int reverse_flag, int position)
 		temp = (*a);
 	}
 	position = find_min_position((*a)) + 1;
-	if (reverse_flag == 1)
-	{
-		push_stack_b_back_to_a(a, b, 2);
-		reverse_sort_3(b);
-		push_stack_b_back_to_a(a, b, 3);
-		return ;
-	}
-	else if (iterations_2 < iterations_1)
+	if (iterations_2 < iterations_1)
 	{
 		check_iterations_and_push(a, b, position);
 		check_iterations_and_push(a, b, (position - 1));
@@ -63,13 +56,9 @@ void	sort_5(stack **a, stack **b, int reverse_flag, int position)
 		check_iterations_and_push(a, b, (position - 1));
 		check_iterations_and_push(a, b, position);
 	}
-	if (reverse_flag == 0)
-	{
-		sort_3(a);
-		push_stack_b_back_to_a(a, b, 2);
-		return ;
-	}
-	push_stack_b_back_to_a(a, b, stack_size((*b)));
+	sort_3(a);
+	push_stack_b_back_to_a(a, b, 2);
+	return ;
 }
 
 void	check_iterations_and_push(stack **a, stack **b, int position)
@@ -103,36 +92,6 @@ void	check_iterations_and_push(stack **a, stack **b, int position)
 	}
 }
 
-void	reverse_sort_3(stack **a)
-{
-	if (is_stack_reverse_sorted((*a)) == 0)
-		return ;
-	if ((*a)->data < (*a)->next->data)
-	{
-		if (((*a)->data < (*a)->next->next->data)
-			&& ((*a)->next->data < (*a)->next->next->data))
-		{
-			swap(a, "sb");
-			reverse_rotate(a, "rrb");
-		}
-		else if (((*a)->data < (*a)->next->next->data)
-				&& ((*a)->next->data > (*a)->next->next->data))
-			rotate(a, "rb");
-		else
-			swap(a, "sb");
-	}
-	else
-	{
-		if ((*a)->data > (*a)->next->next->data)
-		{
-			swap(a, "sb");
-			rotate(a, "rb");
-		}
-		else
-			reverse_rotate(a, "rrb");
-	}
-}
-
 void	sort_3(stack **a)
 {
 	if (is_stack_sorted(*a) == 0)
@@ -163,27 +122,6 @@ void	sort_3(stack **a)
 	}
 }
 
-void	sort_10(stack **a, stack **b, int position)
-{
-	stack	*temp;
-
-	temp = (*a);
-	while (stack_size((*a)) != 7)
-	{
-		if (temp->position >= 1 && temp->position <= 3)
-		{
-			check_iterations_and_push(a, b, temp->position);
-			temp = (*a);
-		}
-		else
-			temp = temp->next;
-	}
-	check_iterations_and_push(a, b, 4);
-	check_iterations_and_push(a, b, 5);
-	sort_5(a, b, 0, (position + 1));
-	sort_5(a, b, 1, 0);
-}
-
 void	push_stack_b_back_to_a(stack **a, stack **b, int len)
 {
 	while (len-- != 0)
@@ -210,16 +148,15 @@ stack	*sort_the_stack(stack *a, stack *b)
 		}
 		if (len == 5)
 		{
-			sort_5(&a, &b, 0, (position + 1));
-
+			sort_5(&a, &b, (position + 1));
 			len = 0;
-			continue;
+			continue ;
 		}
 		if (len == 3)
 		{
 			sort_3(&a);
 			len = 0;
-			continue;
+			continue ;
 		}
 		check_iterations_and_push(&a, &b, position);
 		temp = a;

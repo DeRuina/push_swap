@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 11:16:04 by druina            #+#    #+#             */
-/*   Updated: 2023/02/06 13:36:34 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/22 13:36:51 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_iswhitespace(char c)
 		return (0);
 }
 
-int	ft_atoi(const char *str)
+long long	ft_atoi(char *str)
 {
 	unsigned long long	nb;
 	int					sign;

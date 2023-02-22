@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:59:41 by druina            #+#    #+#             */
-/*   Updated: 2023/02/10 10:37:36 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/22 14:33:12 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	check_argument_content(char *argv)
 	char	*temp;
 
 	temp = argv;
+	if ((temp[0] == '-' || temp[0] == '+') && temp[1] == '\0')
+		return (-1);
 	while (*temp)
 	{
 		if (*temp != '-' && *temp != '+' && (*temp > '9' || *temp < '0'))
@@ -80,12 +82,7 @@ int	check_arguments(char **argv, int argc)
 	argv++;
 	temp = argv;
 	count = 0;
-	if (argc == 2)
-	{
-		if (check_arguments_as_one_string(*argv) == -1)
-			return (check_error());
-	}
-	else
+	if (argc != 2)
 	{
 		while (*argv)
 		{
@@ -99,5 +96,8 @@ int	check_arguments(char **argv, int argc)
 			argv++;
 		}
 	}
+	else
+		if (check_arguments_as_one_string(*argv) == -1)
+			return (check_error());
 	return (0);
 }

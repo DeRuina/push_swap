@@ -6,38 +6,24 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 08:33:04 by druina            #+#    #+#             */
-/*   Updated: 2023/02/15 08:29:01 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/22 16:03:43 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_list(stack *top)
+void	sort_position(stack **top)
 {
-	stack	*temp;
-
-	temp = top;
-	while (temp->next != NULL)
-	{
-		temp = temp->next;
-		free(top);
-		top = temp;
-	}
-	free(top);
-}
-
-void sort_position(stack **top)
-{
-	static int place = 1;
-	stack *temp;
-	stack *end;
-	stack *smallest;
+	static int	place = 1;
+	stack		*temp;
+	stack		*end;
+	stack		*smallest;
 
 	smallest = NULL;
 	if (!(*top)->position)
 	{
 		(*top)->position = 1;
-		return;
+		return ;
 	}
 	end = get_end_node((*top));
 	temp = (*top);
@@ -66,8 +52,6 @@ void sort_position(stack **top)
 			temp->position++;
 		temp = temp->next;
 	}
-
-
 }
 
 stack	*insert(stack *top, char *data)
@@ -77,7 +61,7 @@ stack	*insert(stack *top, char *data)
 
 	new_node = (stack *)malloc(sizeof(stack));
 	if (!new_node)
-		return(NULL);
+		return (NULL);
 	new_node->data = ft_atoi(data);
 	new_node->position = 0;
 	new_node->next = NULL;
@@ -119,4 +103,3 @@ stack	*insert_argv_to_stack_a(char **argv, int argc)
 	argv = temp;
 	return (top);
 }
-
