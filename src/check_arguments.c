@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:59:41 by druina            #+#    #+#             */
-/*   Updated: 2023/02/22 14:33:12 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/24 14:20:49 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	check_duplicate(char **temp, char *argv, int count)
 	int	i;
 
 	i = 0;
-	while (temp[i] != '\0')
+	while (temp[i] != 0)
 	{
 		if (i != count)
 			if (ft_atoi(temp[i]) == ft_atoi(argv))

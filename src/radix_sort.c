@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 13:25:41 by druina            #+#    #+#             */
-/*   Updated: 2023/02/22 14:17:45 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/24 14:21:32 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 void	sorting(stack **a, stack **b)
 {
 	int		max_num;
-	int		i;
 	int		bits;
 	stack	*temp;
 	int		mask;
 
 	mask = 1;
-	i = 0;
 	bits = 0;
 	temp = (*a);
 	max_num = stack_size((*a));

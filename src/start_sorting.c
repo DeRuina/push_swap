@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:36:48 by druina            #+#    #+#             */
-/*   Updated: 2023/02/22 14:17:38 by druina           ###   ########.fr       */
+/*   Updated: 2023/02/24 14:15:43 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,14 +131,10 @@ void	push_stack_b_back_to_a(stack **a, stack **b, int len)
 stack	*sort_the_stack(stack *a, stack *b)
 {
 	int		position;
-	stack	*temp;
-	int		i;
 	int		len;
 
 	len = stack_size(a);
-	temp = a;
 	position = 1;
-	i = 0;
 	while (len != 0)
 	{
 		if (len > 5)
@@ -159,8 +155,6 @@ stack	*sort_the_stack(stack *a, stack *b)
 			continue ;
 		}
 		check_iterations_and_push(&a, &b, position);
-		temp = a;
-		i = 0;
 		position++;
 		len--;
 	}
