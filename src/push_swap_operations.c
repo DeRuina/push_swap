@@ -6,15 +6,15 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 14:59:48 by druina            #+#    #+#             */
-/*   Updated: 2023/02/22 14:18:16 by druina           ###   ########.fr       */
+/*   Updated: 2023/03/03 03:48:09 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(stack **push_from, stack **push_to, char *rule)
+void	push(t_stack **push_from, t_stack **push_to, char *rule)
 {
-	stack	*temp;
+	t_stack	*temp;
 
 	temp = (*push_from)->next;
 	if ((*push_from) == NULL)
@@ -34,16 +34,16 @@ void	push(stack **push_from, stack **push_to, char *rule)
 	ft_printf("%s\n", rule);
 }
 
-void	swap_both(stack **a, stack **b)
+void	swap_both(t_stack **a, t_stack **b)
 {
 	swap(a, NULL);
 	swap(b, NULL);
 	ft_printf("ss\n");
 }
 
-void	swap(stack **a_or_b, char *rule)
+void	swap(t_stack **a_or_b, char *rule)
 {
-	stack	*temp;
+	t_stack	*temp;
 
 	if ((*a_or_b) == NULL || (*a_or_b)->next == NULL)
 		return ;

@@ -6,16 +6,16 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:38:45 by druina            #+#    #+#             */
-/*   Updated: 2023/02/22 14:17:55 by druina           ###   ########.fr       */
+/*   Updated: 2023/03/03 03:48:53 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-stack	*get_end_node(stack *a)
+t_stack	*get_end_node(t_stack *a)
 {
-	stack	*end;
-	stack	*temp;
+	t_stack	*end;
+	t_stack	*temp;
 
 	if (a->next == NULL)
 		return (a);
@@ -27,10 +27,10 @@ stack	*get_end_node(stack *a)
 	return (end);
 }
 
-void	reverse_rotate(stack **a_or_b, char *rule)
+void	reverse_rotate(t_stack **a_or_b, char *rule)
 {
-	stack	*end;
-	stack	*temp;
+	t_stack	*end;
+	t_stack	*temp;
 
 	end = get_end_node((*a_or_b));
 	temp = (*a_or_b);
@@ -43,24 +43,24 @@ void	reverse_rotate(stack **a_or_b, char *rule)
 		ft_printf("%s\n", rule);
 }
 
-void	reverse_rotate_both(stack **a, stack **b)
+void	reverse_rotate_both(t_stack **a, t_stack **b)
 {
 	reverse_rotate(a, NULL);
 	reverse_rotate(b, NULL);
 	ft_printf("rrr");
 }
 
-void	rotate_both(stack **a, stack **b)
+void	rotate_both(t_stack **a, t_stack **b)
 {
 	rotate(a, NULL);
 	rotate(b, NULL);
 	ft_printf("rr");
 }
 
-void	rotate(stack **a_or_b, char *rule)
+void	rotate(t_stack **a_or_b, char *rule)
 {
-	stack	*temp;
-	stack	*end;
+	t_stack	*temp;
+	t_stack	*end;
 
 	if ((*a_or_b)->next == NULL)
 		return ;

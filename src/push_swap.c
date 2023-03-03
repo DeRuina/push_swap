@@ -6,13 +6,13 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:01:58 by druina            #+#    #+#             */
-/*   Updated: 2023/02/24 14:23:09 by druina           ###   ########.fr       */
+/*   Updated: 2023/03/03 03:48:22 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int is_stack_reverse_sorted(stack *a)
+int	is_t_stack_reverse_sorted(t_stack *a)
 {
 	while (a->next != NULL)
 	{
@@ -23,7 +23,7 @@ int is_stack_reverse_sorted(stack *a)
 	return (0);
 }
 
-int	is_stack_sorted(stack *a)
+int	is_t_stack_sorted(t_stack *a)
 {
 	while (a->next != NULL)
 	{
@@ -36,8 +36,8 @@ int	is_stack_sorted(stack *a)
 
 int	main(int argc, char **argv)
 {
-	stack	*a;
-	stack	*b;
+	t_stack	*a;
+	t_stack	*b;
 
 	a = NULL;
 	b = NULL;
@@ -45,14 +45,13 @@ int	main(int argc, char **argv)
 	{
 		if (check_arguments(argv, argc) == -1)
 			exit(EXIT_FAILURE);
-		a = insert_argv_to_stack_a(argv, argc);
-		if (is_stack_sorted(a) == 0)
+		a = insert_argv_to_t_stack_a(argv, argc);
+		if (is_t_stack_sorted(a) == 0)
 			exit(EXIT_SUCCESS);
-		if (stack_size(a) == 2)
+		if (t_stack_size(a) == 2)
 			swap(&a, "sa");
 		else
-			a = sort_the_stack(a, b);
-
+			a = sort_the_t_stack(a, b);
 	}
 	else
 		exit(EXIT_FAILURE);

@@ -6,20 +6,20 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:13:30 by druina            #+#    #+#             */
-/*   Updated: 2023/02/22 14:18:04 by druina           ###   ########.fr       */
+/*   Updated: 2023/03/03 03:49:54 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_min_position(stack *a_or_b)
+int	find_min_position(t_stack *a_or_b)
 {
 	int		min;
 	int		len;
-	stack	*temp;
+	t_stack	*temp;
 
 	temp = a_or_b;
-	len = stack_size(a_or_b);
+	len = t_stack_size(a_or_b);
 	min = 0;
 	while (len != 0)
 	{
@@ -33,7 +33,7 @@ int	find_min_position(stack *a_or_b)
 	return (min);
 }
 
-int	iterations_until_bottom(stack *temp)
+int	iterations_until_bottom(t_stack *temp)
 {
 	int	iterations;
 
@@ -47,7 +47,7 @@ int	iterations_until_bottom(stack *temp)
 	return (iterations);
 }
 
-int	iterations_until_top(stack *temp, stack *a)
+int	iterations_until_top(t_stack *temp, t_stack *a)
 {
 	int	iterations;
 
@@ -60,10 +60,10 @@ int	iterations_until_top(stack *temp, stack *a)
 	return (iterations);
 }
 
-int	find_location_in_stack(stack *a, int position)
+int	find_location_in_t_stack(t_stack *a, int position)
 {
 	int		location;
-	stack	*temp;
+	t_stack	*temp;
 
 	temp = a;
 	location = 1;
@@ -77,7 +77,7 @@ int	find_location_in_stack(stack *a, int position)
 	return (location);
 }
 
-int	stack_size(stack *a)
+int	t_stack_size(t_stack *a)
 {
 	int	i;
 

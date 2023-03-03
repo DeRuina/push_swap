@@ -6,18 +6,18 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 08:33:04 by druina            #+#    #+#             */
-/*   Updated: 2023/02/22 16:03:43 by druina           ###   ########.fr       */
+/*   Updated: 2023/03/03 03:52:59 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_position(stack **top)
+void	sort_position(t_stack **top)
 {
 	static int	place = 1;
-	stack		*temp;
-	stack		*end;
-	stack		*smallest;
+	t_stack		*temp;
+	t_stack		*end;
+	t_stack		*smallest;
 
 	smallest = NULL;
 	if (!(*top)->position)
@@ -29,37 +29,48 @@ void	sort_position(stack **top)
 	temp = (*top);
 	while (temp->next != NULL)
 	{
-		if (temp->data > end->data)
-		{
-			if (smallest != NULL)
-			{
-				if (temp->data < smallest->data)
-					smallest = temp;
-			}
-			else
-				smallest = temp;
-		}
-		temp = temp->next;
+		sort_position_part_1(&temp, &end, &smallest);
 		if (temp->next == NULL)
 			end->position = ++place;
 	}
-	if (smallest != NULL)
-		end->position = smallest->position;
-	temp = (*top);
-	while (temp->next != NULL)
+	sort_position_part_2(&temp, top, &end, &smallest);
+}
+
+void	sort_position_part_1(t_stack **temp, t_stack **end, t_stack **smallest)
+{
+	if ((*temp)->data > (*end)->data)
 	{
-		if (end->position <= temp->position)
-			temp->position++;
-		temp = temp->next;
+		if ((*smallest) != NULL)
+		{
+			if ((*temp)->data < (*smallest)->data)
+				(*smallest) = (*temp);
+		}
+		else
+			(*smallest) = (*temp);
+	}
+	(*temp) = (*temp)->next;
+}
+
+void	sort_position_part_2(t_stack **temp, t_stack **top, t_stack **end,
+		t_stack **smallest)
+{
+	if ((*smallest) != NULL)
+		(*end)->position = (*smallest)->position;
+	(*temp) = (*top);
+	while ((*temp)->next != NULL)
+	{
+		if ((*end)->position <= (*temp)->position)
+			(*temp)->position++;
+		(*temp) = (*temp)->next;
 	}
 }
 
-stack	*insert(stack *top, char *data)
+t_stack	*insert(t_stack *top, char *data)
 {
-	stack	*new_node;
-	stack	*temp;
+	t_stack	*new_node;
+	t_stack	*temp;
 
-	new_node = (stack *)malloc(sizeof(stack));
+	new_node = (t_stack *)malloc(sizeof(t_stack));
 	if (!new_node)
 		return (NULL);
 	new_node->data = ft_atoi(data);
@@ -77,9 +88,9 @@ stack	*insert(stack *top, char *data)
 	return (top);
 }
 
-stack	*insert_argv_to_stack_a(char **argv, int argc)
+t_stack	*insert_argv_to_t_stack_a(char **argv, int argc)
 {
-	stack	*top;
+	t_stack	*top;
 	char	**one_arg;
 	char	**temp;
 
