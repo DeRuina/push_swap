@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 13:25:41 by druina            #+#    #+#             */
-/*   Updated: 2023/03/03 03:48:38 by druina           ###   ########.fr       */
+/*   Updated: 2023/03/06 11:47:02 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ void	sorting(t_stack **a, t_stack **b)
 	{
 		while (max_num-- != 0)
 			masking(&temp, mask, a, b);
-		push_t_stack_b_back_to_a(a, b, t_stack_size((*b)));
+		if (bits == 1)
+			push_t_stack_b_back_to_a(a, b, t_stack_size((*b)));
+		else
+			masking_back(mask, a, b);
 		temp = (*a);
 		mask = mask << 1;
 		bits--;
@@ -52,5 +55,27 @@ void	masking(t_stack **temp, int mask, t_stack **a, t_stack **b)
 	{
 		(*temp) = (*temp)->next;
 		rotate(a, "ra");
+	}
+}
+
+void masking_back(int mask, t_stack **a, t_stack **b)
+{
+	t_stack *temp;
+	int size;
+	mask = mask << 1;
+	size = t_stack_size((*b));
+	temp = (*b);
+	while (size-- != 0)
+	{
+		if ((temp->position & mask) == 0)
+		{
+			temp = temp->next;
+			rotate(b, "rb");
+		}
+		else
+		{
+			temp = temp->next;
+			push(b, a, "pa");
+		}
 	}
 }
