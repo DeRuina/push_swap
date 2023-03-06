@@ -6,7 +6,7 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:58:25 by druina            #+#    #+#             */
-/*   Updated: 2023/03/06 11:39:03 by druina           ###   ########.fr       */
+/*   Updated: 2023/03/06 13:49:05 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ void				sort_3_else(t_stack **a);
 void				push_2_before_sort_3(int iterations_2, int iterations,
 						t_stack **a, t_stack **b);
 void				masking_back(int mask, t_stack **a, t_stack **b);
+int					bit_size(int max_num);
 
 #endif

@@ -6,11 +6,24 @@
 /*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 13:25:41 by druina            #+#    #+#             */
-/*   Updated: 2023/03/06 11:47:02 by druina           ###   ########.fr       */
+/*   Updated: 2023/03/06 13:48:57 by druina           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	bit_size(int max_num)
+{
+	int	bits;
+
+	bits = 0;
+	while (max_num)
+	{
+		bits++;
+		max_num = max_num >> 1;
+	}
+	return (bits);
+}
 
 void	sorting(t_stack **a, t_stack **b)
 {
@@ -23,12 +36,7 @@ void	sorting(t_stack **a, t_stack **b)
 	bits = 0;
 	temp = (*a);
 	max_num = t_stack_size((*a));
-	while (max_num)
-	{
-		bits++;
-		max_num = max_num >> 1;
-	}
-	max_num = t_stack_size((*a));
+	bits = bit_size(max_num);
 	while (bits != 0)
 	{
 		while (max_num-- != 0)
@@ -58,10 +66,11 @@ void	masking(t_stack **temp, int mask, t_stack **a, t_stack **b)
 	}
 }
 
-void masking_back(int mask, t_stack **a, t_stack **b)
+void	masking_back(int mask, t_stack **a, t_stack **b)
 {
-	t_stack *temp;
-	int size;
+	t_stack	*temp;
+	int		size;
+
 	mask = mask << 1;
 	size = t_stack_size((*b));
 	temp = (*b);
