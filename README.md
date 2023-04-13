@@ -82,7 +82,7 @@ For example, this is the result of the following command
 bash loop.sh 100 10
 ```
 
-![Visualizer](img/push_swap.gif.png)
+![Visualizer](img/push_swap.gif)
 
 ## Author
 
