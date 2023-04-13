@@ -1,14 +1,15 @@
+![](img/push_swap.png)
 
-# Push_swap 
+# Push_swap
 
 
-#### Because Swap_push isn’t as natural 
+#### Because Swap_push isn’t as natural
 
 
 
 ## About ##
 
-- Push_swap is a sorting algorithm project at school 42. 
+- Push_swap is a sorting algorithm project at school 42.
 - We start with two stacks called A and B.
 - A is filled with some random integers (without duplicates) and B is empty.
 - We can perform a limited set of instructions on these stacks and the goal is to sort all these integers using the lowest possible number of actions.
