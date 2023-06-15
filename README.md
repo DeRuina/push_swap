@@ -47,7 +47,7 @@ Only the following functions are allowed to be used in this project:
 - exit
 - [My own Libft library](https://github.com/DeRuina/Libft.git)
 
-## Starting ##
+## Usage ##
 
 ```bash
 # Clone this project
